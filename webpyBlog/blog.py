@@ -1,7 +1,7 @@
 """ Basic blog using webpy 0.3 """
 import web
 import model
-import time
+import datetime
 ### Url mappings
 
 urls = (
@@ -16,7 +16,7 @@ urls = (
 ### Templates
 t_globals = {
     'datestr': web.datestr,
-    'time':time
+    'datetime':datetime.datetime
 }
 render = web.template.render('templates', base='base', globals=t_globals)
 
@@ -26,6 +26,9 @@ class Index:
     def GET(self):
         """ Show page """
         posts = model.get_posts()
+        # for post in posts:
+          # print post.posted_on.split(".")[0]
+          # print web.datestr(datetime.datetime.strptime(post.posted_on.split(".")[0],"%Y-%m-%d %H:%M:%S"))
         return render.index(posts)
 
 

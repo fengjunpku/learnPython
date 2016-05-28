@@ -1,11 +1,12 @@
 $def with (posts)
 <h1>Blog posts</h1>
-
 <ul>
 $for post in posts:
     <li>
-        <a href="/view/$post.id">$post.title</a> 
-        from $datestr(time.strptime(post.posted_on,"%Y-%m-%d %H:%M:%S")) 
+        <b>$post.id</b>
+        <a href="/view/$post.id">$post.title</a>
+        from $#datestr(datetime.strptime(post.posted_on.split(".")[0],"%Y-%m-%d %H:%M:%S"))
+        $post.posted_on.split(".")[0]
         <a href="/edit/$post.id">Edit</a>
     </li>
 </ul>

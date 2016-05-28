@@ -1,6 +1,7 @@
 $def with (post)
 
 <h1>$post.title</h1>
-$datestr(post.posted_on)<br/>
+$#datestr(datetime.strptime(post.posted_on.split(".")[0],"%Y-%m-%d %H:%M:%S"))
+$post.posted_on.split(".")[0]<br/>
 
 $post.content
