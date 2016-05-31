@@ -7,8 +7,8 @@ import threading
 ################################
 class Spider(object):
   def __init__(self):
-    #self.conn = cd_conn.CD_Conn()
-    self.conn = Sp_conn.Sp_conn()
+    self.conn = cd_conn.CD_Conn()
+    #self.conn = Sp_conn.Sp_conn()
     self.parser = Sp_parser.Sp_parser()
     self.outputer = Sp_outputer.Sp_outputer()
 
@@ -54,7 +54,7 @@ if __name__ == "__main__":
     sp = Spider()
     thread = threading.Thread(target = sp.download, args = (root_url,url,man.nums[url],man.dict[url]))
     thread.start()
-    thread.join(3)
+    thread.join(20)
     #sp.download(root_url,url,man.nums[url],man.dict[url])
 
     
