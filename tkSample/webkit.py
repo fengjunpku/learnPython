@@ -20,7 +20,7 @@ class Render(QWebPage):
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
-url = 'http://miaomiaoxiong.net/md/#OpenMP_note'  
+url = 'http://read.qidian.com/BookReader/wauiEP9i7qk3LbtcZNMchg2,6pDJbL5AhS_gn4SMoDUcDQ2.aspx'  
 r = Render(url)  
 html = r.frame.toHtml() 
 print html
