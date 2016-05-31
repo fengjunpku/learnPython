@@ -5,8 +5,8 @@ class Sp_outputer(object):
     self._data=None
 
   def check(self,data):
-    if data['title'] is None:
-        print "For %s . Can't get any title" % data['url']
+    if data is None:
+        print ">>> null data"
         return False
     self._data=data
     return True
@@ -27,7 +27,7 @@ class Sp_outputer(object):
     dir = "downloads/"
     filename = str(num)+"_"+title+".txt"
     file = open(dir+filename,"w")
-    print "Writing to file... "+dir+filename
+    print "Writing to file: "+dir+filename
     file.write("########################################\n")
     file.write(self._data['title']+'\n')
     file.write("########################################\n\n")

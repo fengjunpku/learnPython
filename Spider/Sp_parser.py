@@ -19,8 +19,9 @@ class Sp_parser(object):
     return self._soup.find('dd',id="footlink").find_all('a')[2].get('href')
   
   def parse(self,page):
-    if page is None:
-          return None
+    if page is None or str(page)=="":
+      print ">>>>NULL page"
+      return None
     self._soup = BeautifulSoup(page,'html.parser',from_encoding='utf-8')
     data={}
     #set tile
@@ -31,7 +32,7 @@ class Sp_parser(object):
     for pragraph in pragraphs:
       data['content'].append(pragraph)
     #set next
-      data['next'] = self._get_next()
+      #data['next'] = self._get_next()
     ###################
     return data
       

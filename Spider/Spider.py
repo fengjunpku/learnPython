@@ -7,21 +7,21 @@ import threading
 ################################
 class Spider(object):
   def __init__(self):
-    self.conn = cd_conn.CD_Conn()
-    #self.conn = Sp_conn.Sp_conn()
+    #self.conn = cd_conn.CD_Conn()
+    self.conn = Sp_conn.Sp_conn()
     self.parser = Sp_parser.Sp_parser()
     self.outputer = Sp_outputer.Sp_outputer()
 
   def download(self,root,url,num,title):
     if self.isDown(num,title):
-      #print "Has done"
+      print str(num)+" done"
       return
     if self.conn.visit(root+url) == 200:
       whole_page=self.conn.getpage()
       data=self.parser.parse(whole_page)
-      self.outputer.check(data)
-      #self.outputer.echo()
-      self.outputer.record(num,title)
+      if self.outputer.check(data):
+        #self.outputer.echo()
+        self.outputer.record(num,title)
   
   def isDown(self,num,title):
     dir = "downloads/"
@@ -38,8 +38,7 @@ if __name__ == "__main__":
   reload(sys)
   sys.setdefaultencoding('utf-8')
   ###########
-  root_url = "http://www.23wx.com/html/21/21741/"
-  sp = Spider()
+  root_url = "http://www.23wx.com/html/56/56569/"
   man = Sp_urlManager.urlsManager(root_url)
   #############
   if man.start():
@@ -51,7 +50,8 @@ if __name__ == "__main__":
   ##############
   for url in man.pool:
     #print "######################"
-    #print "Starting: "+man.dict[url]
+    print "Starting: "+str(man.nums[url])+" / "+str(man.num)
+    sp = Spider()
     thread = threading.Thread(target = sp.download, args = (root_url,url,man.nums[url],man.dict[url]))
     thread.start()
     thread.join(3)

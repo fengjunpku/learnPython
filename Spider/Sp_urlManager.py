@@ -24,7 +24,7 @@ class urlsManager(object):
       page = page.decode("gbk").encode("utf-8")
     soup = BeautifulSoup(page,'html.parser',from_encoding='utf-8')
     pattern = re.compile(r'^\d+')
-    count = 900001
+    count = 700001
     for entry in soup.find_all('a'):
       url = entry.get('href')
       title = entry.get_text()

@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 import os,sys
 def scan(dir):
-  order = 900001
+  order = 700001
   unorders = []
   has = 0
   miss = 0
@@ -40,5 +40,5 @@ if __name__ == "__main__":
   # Set coding
   reload(sys)
   sys.setdefaultencoding('utf-8')
-  #scan("downloads")
-  combine("downloads",3)
+  scan("downloads")
+  #combine("downloads",3)
