@@ -32,8 +32,6 @@ class Spider(object):
     return self.outputer._data['next']
 
 if __name__ == "__main__":
-  def handler(signum, frame):
-    raise AssertionError
   # Set coding
   reload(sys)
   sys.setdefaultencoding('utf-8')
