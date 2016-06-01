@@ -38,7 +38,7 @@ if __name__ == "__main__":
   reload(sys)
   sys.setdefaultencoding('utf-8')
   ###########
-  root_url = "http://www.23wx.com/html/56/56569/"
+  root_url = "http://www.biquku.com/0/663/"
   man = Sp_urlManager.urlsManager(root_url)
   #############
   if man.start():
@@ -54,7 +54,7 @@ if __name__ == "__main__":
     sp = Spider()
     thread = threading.Thread(target = sp.download, args = (root_url,url,man.nums[url],man.dict[url]))
     thread.start()
-    thread.join(20)
+    thread.join(3)
     #sp.download(root_url,url,man.nums[url],man.dict[url])
 
     

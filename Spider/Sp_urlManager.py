@@ -1,6 +1,7 @@
 # -*- coding: UTF-8 -*-
 import urllib2
 import re
+import chardet
 from bs4 import BeautifulSoup
 
 class urlsManager(object):
@@ -18,16 +19,20 @@ class urlsManager(object):
     if response.getcode() != 200:
       print "Connect failed"
       return False
-    webcode = response.info().getparam('charset')
     page = response.read()
-    if webcode == "gbk":
-      page = page.decode("gbk").encode("utf-8")
+    webcode = chardet.detect(page)['encoding']
+    if webcode == "GB2312":
+      page = page.decode("gb2312").encode("utf-8")
     soup = BeautifulSoup(page,'html.parser',from_encoding='utf-8')
     pattern = re.compile(r'^\d+')
     count = 700001
-    for entry in soup.find_all('a'):
+    for entry in soup.find('div',id='list').find_all('a'):
       url = entry.get('href')
-      title = entry.get_text()
+      title = entry.get_text().replace('?','？')
+      title = title.replace('*','0')
+      title = title.replace(' ','_')
+      title = title.replace('<','《')
+      title = title.replace('>','》')
       match = pattern.match(url)
       if match:
         self.pool.append(url)

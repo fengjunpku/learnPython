@@ -14,7 +14,7 @@ class Sp_outputer(object):
   def echo(self):
     #print len(self._data)
     #print "##############"
-    print "Downloading <<"+self._data['title']+">>.."
+    print "Downloading "+self._data['title']+"..."
     #print "##############\n"
     #print self._data['url']
     #print "##############"
