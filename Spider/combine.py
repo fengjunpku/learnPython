@@ -20,8 +20,8 @@ def scan(dir):
   total = has + miss
   print "total : %d, miss : %d"%(total,miss)
 
-def combine(dir,num):
-  file=open("900000_sum.txt","w")
+def combine(dir,name):
+  file=open(str(name)+".txt","w")
   count = 0
   filenames = []
   for parent,dirnames,files in os.walk(dir):
@@ -29,16 +29,26 @@ def combine(dir,num):
   for filename in filenames:
     count+=1
     print "reading %s"%filename
-    #if count>num:
-      #return
     readfile=open(dir+"/"+filename,"r")
     file.write(readfile.read())
     readfile.close()
   file.close()
 
+def clean(dir):
+  for file in os.listdir(dir):
+    target = os.path.join(dir,file)
+    os.remove(target)
+
 if __name__ == "__main__":
+  dirname = "downloads"
+  cmdNum = len(sys.argv)
   # Set coding
   reload(sys)
   sys.setdefaultencoding('utf-8')
-  scan("downloads")
-  #combine("downloads",3)
+  if cmdNum == 1:
+    scan(dirname)
+  elif cmdNum == 3 and sys.argv[1] == "a":
+    sumfile = sys.argv[2]
+    combine(dirname,sumfile)
+  elif cmdNum == 2 and sys.argv[1] == "c":
+    clean(dirname)
