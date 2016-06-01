@@ -13,6 +13,7 @@ class urlsManager(object):
     self.num = 0
   
   def start(self):
+    print "Initing..."
     request = urllib2.Request(self.root)
     request.add_header("user-agent", "Mozilla/5.0")
     response = urllib2.urlopen(request)
@@ -22,7 +23,7 @@ class urlsManager(object):
     page = response.read()
     webcode = chardet.detect(page)['encoding']
     if webcode == "GB2312":
-      page = page.decode("gb2312").encode("utf-8")
+      page = page#.decode("gb2312").encode("utf-8")
     soup = BeautifulSoup(page,'html.parser',from_encoding='utf-8')
     pattern = re.compile(r'^\d+')
     count = 700001
@@ -39,6 +40,7 @@ class urlsManager(object):
         self.dict[url]=title
         self.nums[url] = count
         count+=1
+        print "Find url %s"%url
     self.num = len(self.pool)
     return True
   

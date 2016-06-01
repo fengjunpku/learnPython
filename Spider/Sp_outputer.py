@@ -28,9 +28,9 @@ class Sp_outputer(object):
     filename = str(num)+"_"+title+".txt"
     file = open(dir+filename,"w")
     print "Writing to file: "+dir+filename
-    file.write("########################################\n")
-    file.write(self._data['title']+'\n')
-    file.write("########################################\n\n")
+    file.write("#####\n")
+    file.write(title+'\n')
+    file.write("#####\n\n")
     for pragraph in self._data['content']:
       file.write(pragraph+'\n\n')
     file.close()

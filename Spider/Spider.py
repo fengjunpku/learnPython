@@ -36,7 +36,7 @@ if __name__ == "__main__":
   reload(sys)
   sys.setdefaultencoding('utf-8')
   ###########
-  root_url = "http://www.biquku.com/0/663/"
+  root_url = "http://www.biquku.com/0/247/"
   man = Sp_urlManager.urlsManager(root_url)
   #############
   if man.start():

@@ -30,7 +30,7 @@ class CD_Conn(object):
         self._response.close()
         #print webcode['encoding']
         if webcode == "GB2312":
-          return rawdata.decode("gb2312").encode("utf-8")
+          return rawdata#.decode("gb2312").encode("utf-8")
         elif webcode == "None":
           return rawdata
         else:
