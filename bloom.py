@@ -82,9 +82,10 @@ class BloomFilter(object):
       hash_val = hash_val * seed + chval
     return hash_val
 
-#测试代码
-bf = BloomFilter(0.001, 1000000)
-elements = ['palydawn','fengjun','efe','efef']
-for element in elements:
-  bf.insert_element(element)
-print bf.is_element_exist('palydan')
+if __name__ == "__main__":
+  #测试代码
+  bf = BloomFilter(0.001, 1000000)
+  elements = ['palydawn','fengjun','efe','efef']
+  for element in elements:
+    bf.insert_element(element)
+  print bf.is_element_exist('palydan')
