@@ -10,4 +10,4 @@ driver.get("http://miaomiaoxiong.net/md/#OpenMP_note")
 time.sleep(0.5)
 #print driver.current_url
 print driver.page_source
-driver.quit
+driver.quit()
