@@ -3,22 +3,24 @@ import sys
 import os
 import Sp_conn,Sp_parser,Sp_outputer,Sp_urlManager,cd_conn
 import time
-import threading
+from multiprocessing import Process
 ################################
-class Spider(threading.Thread):
-  def __init__(self,root,url,num,title):
-    threading.Thread.__init__(self)
+class Spider(object):
+  def __init__(self):
     self.conn = cd_conn.CD_Conn()
     #self.conn = Sp_conn.Sp_conn()
     self.parser = Sp_parser.Sp_parser()
     self.outputer = Sp_outputer.Sp_outputer()
+    self._root = ''
+    self._url = ''
+    self._num = 0
+    self._title = ''
+    
+  def download(self,root,url,num,title):
     self._root = root
     self._url = url
     self._num = num
     self._title = title
-    
-
-  def download(self):
     if self.isDown():
       print str(self._num)+" done"
       return
@@ -28,9 +30,6 @@ class Spider(threading.Thread):
       if self.outputer.check(data):
         #self.outputer.echo()
         self.outputer.record(self._num,self._title)
-
-  def run(self):
-    self.download()
 
   def isDown(self):
     dir = "downloads/"
@@ -57,14 +56,11 @@ if __name__ == "__main__":
     exit()
   print "total : %d"%man.num
   ##############
+  spider = Spider()
   for url in man.pool:
     #print "######################"
     print "Starting: "+str(man.nums[url])+" / "+str(man.num)
-    tsp = Spider(root_url,url,man.nums[url],man.dict[url])
-    tsp.start()
-    tsp.join(3)
+    pro = Process(target=spider.download,args=(root_url,url,man.nums[url],man.dict[url],))
+    pro.start()
+    pro.join(3)
     #sp.download(root_url,url,man.nums[url],man.dict[url])
-
-    
-    
-    

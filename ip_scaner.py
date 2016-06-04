@@ -45,10 +45,12 @@ def find_ip(ip_prefix):
   ''''' 
   给出当前的127.0.0 ，然后扫描整个段所有地址 
   ''' 
+  count = 0
   for i in range(1,256): 
     ip = '%s.%s'%(ip_prefix,i) 
     thread.start_new_thread(ping_ip, (ip,)) 
-    time.sleep(0.3) 
+    time.sleep(0.3)
+  return count
    
 if __name__ == "__main__": 
   print "start time %s"%time.ctime() 
