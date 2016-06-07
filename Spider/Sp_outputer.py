@@ -1,5 +1,7 @@
 # -*- coding: UTF-8 -*-
-
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 class Sp_outputer(object):
   def __init__(self):
     self._data=None
@@ -25,14 +27,14 @@ class Sp_outputer(object):
   
   def record(self,num,title):
     dir = "downloads/"
-    filename = str(num)+"_"+title+".txt"
+    filename = str(num)+"_"+self._data['title']+".txt"
     file = open(dir+filename,"w")
     print "Writing to file: "+dir+filename
     file.write("########################################\n")
-    file.write(self._data['title'].encode('utf-8')+'\n')
+    file.write(self._data['title']+'\n')
     file.write("########################################\n\n")
     for pragraph in self._data['content']:
-      file.write(pragraph.encode('utf-8')+'\n\n')
+      file.write(pragraph+'\n\n')
     file.close()
 
 

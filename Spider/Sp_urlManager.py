@@ -20,19 +20,25 @@ class urlsManager(object):
       return False
     webcode = response.info().getparam('charset')
     page = response.read()
-    if webcode == "gbk":
-      page = page.decode("gbk").encode("utf-8")
+    #print page
+    if webcode == "gb2312":
+      page = page#.decode("gb2312").encode("utf-8")
     soup = BeautifulSoup(page,'html.parser',from_encoding='utf-8')
-    pattern = re.compile(r'^\d+')
+    #pattern = re.compile(r'^\d+')
+    pattern = re.compile(r'/wcxs-\d+-\d+')
+    #soup = soup.find_all('div',{'class','box'})[1]
     count = 700001
     for entry in soup.find_all('a'):
       url = entry.get('href')
       title = entry.get_text()
+      if url == None:
+        continue
       match = pattern.match(url)
       if match:
         self.pool.append(url)
         self.dict[url]=title
         self.nums[url] = count
+        print url
         count+=1
     self.num = len(self.pool)
     return True

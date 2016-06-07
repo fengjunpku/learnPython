@@ -1,6 +1,6 @@
 #coding:utf8
 import urllib2
-
+import chardet
 class CD_Conn(object):
     def __init__(self):
         self._url=None
@@ -26,14 +26,16 @@ class CD_Conn(object):
         #
         webcode = self._response.info().getparam('charset')
         rawdata = self._response.read()
+        webcode = chardet.detect(rawdata)['encoding']
         self._response.close()
+        return rawdata#.decode("gb2312",'ignore').encode("utf-8")
         #print webcode
-        if webcode == "GBK":
-            return rawdata.decode("gbk").encode("utf-8")
-        elif webcode == "None":
-            return rawdata
-        else:
-            return rawdata
+        # if webcode == "GBK":
+            # return rawdata.decode("gbk").encode("utf-8")
+        # elif webcode == "None":
+            # return rawdata.decode("gb2312").encode("utf-8")
+        # else:
+            # return rawdata.decode("gb2312").encode("utf-8")
     
     
 

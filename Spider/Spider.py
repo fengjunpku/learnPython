@@ -46,7 +46,8 @@ if __name__ == "__main__":
   reload(sys)
   sys.setdefaultencoding('utf-8')
   ###########
-  root_url = "http://www.23wx.com/html/56/56569/"
+  root_url = "http://www.quledu.com/wcxs-49301/"
+  m_url = "http://m.quledu.com/"
   man = Sp_urlManager.urlsManager(root_url)
   #############
   if man.start():
@@ -60,7 +61,7 @@ if __name__ == "__main__":
   for url in man.pool:
     #print "######################"
     print "Starting: "+str(man.nums[url])+" / "+str(man.num)
-    pro = Process(target=spider.download,args=(root_url,url,man.nums[url],man.dict[url],))
+    pro = Process(target=spider.download,args=(m_url,url,man.nums[url],man.dict[url],))
     pro.start()
     pro.join(3)
     #sp.download(root_url,url,man.nums[url],man.dict[url])
