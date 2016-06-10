@@ -1,3 +1,7 @@
+# -*- coding: UTF-8 -*-
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 from urllib2 import Request
 from urllib2 import urlopen
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
@@ -30,16 +34,14 @@ def readPDF(pdfFile):
 
 if __name__ == "__main__":
   url = 'http://pythonscraping.com/pages/warandpeace/chapter1.pdf'
-  open = urlopen(Request(url)).read()
-  memoryFile = StringIO(open)
+  webpage = urlopen(Request(url)).read()
+  memoryFile = StringIO(webpage)
   #print memoryFile
   rsrcmgr = PDFResourceManager()
   retstr = StringIO()
   codec = 'utf-8'
   laparams = LAParams()
   device = TextConverter(rsrcmgr, retstr, codec=codec, laparams=laparams)
-  fp = file('chapter1.pdf', 'rb')
-  print fp
   interpreter = PDFPageInterpreter(rsrcmgr, device)
   password = ""
   maxpages = 0
@@ -47,7 +49,6 @@ if __name__ == "__main__":
   pagenos=set()
   for page in PDFPage.get_pages(memoryFile, pagenos, maxpages=maxpages, password=password,caching=caching, check_extractable=True):
     interpreter.process_page(page)
-  fp.close()
   device.close()
   str = retstr.getvalue()
   retstr.close()
