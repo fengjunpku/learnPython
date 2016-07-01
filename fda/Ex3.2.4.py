@@ -23,5 +23,5 @@ C0 = math.exp(-r*T)*sum(maximum(S[-1]-K,0))/I
 tnp2 = time()-t0
 #print C0
 #print tnp2
-plt.plot(S[:,:10])
+plt.plot(S[:,:5])
 plt.show()
