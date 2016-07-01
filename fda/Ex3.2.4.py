@@ -4,7 +4,7 @@ from numpy import *
 import matplotlib.pyplot as plt
 from time import time
 
-random.seed(20000)
+random.seed(30000)
 t0 = time()
 #parameters
 S0 = 100
