@@ -3,4 +3,4 @@
 *.txt
 *.log
 *.pdf
-._Store
+.DS_Store
