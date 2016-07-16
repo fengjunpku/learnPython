@@ -1,4 +1,4 @@
-# coding=utf-8
+#* coding=utf-8*
 # python27
 
 from thinkbayes import Suite
