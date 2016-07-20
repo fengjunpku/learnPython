@@ -9,6 +9,8 @@ def scan(dir):
   total = 0
   for parent,dirnames,filenames in os.walk(dir):
     for filename in filenames:
+      if filename==".DS_Store":
+        continue
       has = len(filenames)
       this = int(filename.split("_")[0])
       if this != order:

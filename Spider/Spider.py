@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 import sys
 import os
-import Sp_conn,Sp_parser,Sp_outputer,Sp_urlManager,cd_conn
+import Sp_parser,Sp_outputer,Sp_urlManager,cd_conn
 import time
 from multiprocessing import Process
 ################################
@@ -33,7 +33,8 @@ class Spider(object):
 
   def isDown(self):
     dir = "downloads/"
-    filename = str(self._num)+"_"+self._title+".txt"
+    filename = str(self._num)+"__"+self._title+".txt"
+    #print filename
     return os.path.isfile(dir+filename)
   
   def next_url(self):
@@ -46,8 +47,8 @@ if __name__ == "__main__":
   reload(sys)
   sys.setdefaultencoding('utf-8')
   ###########
-  root_url = "http://www.quledu.com/wcxs-49301/"
-  m_url = "http://m.quledu.com/"
+  root_url = "http://www.23wx.com/html/42/42368/"
+  #m_url = "http://m.quledu.com/"
   man = Sp_urlManager.urlsManager(root_url)
   #############
   if man.start():
@@ -61,7 +62,7 @@ if __name__ == "__main__":
   for url in man.pool:
     #print "######################"
     print "Starting: "+str(man.nums[url])+" / "+str(man.num)
-    pro = Process(target=spider.download,args=(m_url,url,man.nums[url],man.dict[url],))
+    pro = Process(target=spider.download,args=(root_url,url,man.nums[url],man.dict[url],))
     pro.start()
     pro.join(3)
     #sp.download(root_url,url,man.nums[url],man.dict[url])
