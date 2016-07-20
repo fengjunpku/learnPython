@@ -31,6 +31,8 @@ def combine(dir,name):
     filenames=files
   num_files = len(filenames)
   for filename in filenames:
+    if filename==".DS_Store":
+      continue
     count+=1
     print "reading %s"%filename
     readfile=open(dir+"/"+filename,"r")
