@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import ROOT
 # Example: displaying a ROOT histogram with Python
+# install root first
 from ROOT import gRandom,TCanvas,TH1F,gSystem
 c1 = TCanvas('c1','Example',200,10,700,500)
 hpx = TH1F('hpx','px',200,-10,10)
