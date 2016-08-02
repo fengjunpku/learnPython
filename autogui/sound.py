@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-import time,sys,os
+import time,sys,os,platform
 def beep():
 	i = 0
 	while i<10:
@@ -10,4 +10,5 @@ def beep():
 
 if __name__ == "__main__":
 	beep()
-	os.system('say "your program has finished"')
+	if platform.system()=='Darwin':
+		os.system('say "your program has finished"')
