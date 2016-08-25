@@ -1,7 +1,9 @@
-#Discription
+# Discription
 Simple python scripts during learning python
 
-by FengJun @20150528
+by FengJun @20160528
+# History
+* 20160825 add perl
 # Note
 * `pyenv`
 
