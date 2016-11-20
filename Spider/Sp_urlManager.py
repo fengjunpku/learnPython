@@ -27,11 +27,12 @@ class urlsManager(object):
     pattern = re.compile(r'^\d+')
     #pattern = re.compile(r'/wcxs-\d+-\d+')
     #soup = soup.find_all('div',{'class','box'})[1]
-    count = 700001
-    for entry in soup.find_all('a'):
+    count = 300001
+    for entry in soup.find('div',id='list').find_all('a'):
       url = entry.get('href')
       title = entry.get_text()
       title = title.replace('?','？')
+      title = title.replace('：','_')
       title = title.replace(' ','_')
       title = title.replace('*','0')
       title = title.replace('<','《')
@@ -41,9 +42,9 @@ class urlsManager(object):
       match = pattern.match(url)
       if match:
         self.pool.append(url)
-        self.dict[url]=title
+        self.dict[url] = title
         self.nums[url] = count
-        print url
+        print url+' : '+title
         count+=1
     self.num = len(self.pool)
     return True

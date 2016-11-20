@@ -33,7 +33,7 @@ class Spider(object):
 
   def isDown(self):
     dir = "downloads/"
-    filename = str(self._num)+"__"+self._title+".txt"
+    filename = str(self._num)+"_"+self._title+".txt"
     #print filename
     return os.path.isfile(dir+filename)
   
@@ -47,7 +47,7 @@ if __name__ == "__main__":
   reload(sys)
   sys.setdefaultencoding('utf-8')
   ###########
-  root_url = "http://www.23wx.com/html/53/53331/"
+  root_url = "http://www.biqugex.com/book_4440/"
   #m_url = "http://m.quledu.com/"
   man = Sp_urlManager.urlsManager(root_url)
   #############

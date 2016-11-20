@@ -20,7 +20,7 @@ class Sp_parser(object):
   
   #<dd id="contents">
   def _get_content(self):
-    return self._soup.find('dd',id="contents").get_text()
+    return self._soup.find('div',id="content").get_text()
   #<dd id="footlink"><a href="16507280.html">上一页</a><a href="index.html">返回目录</a><a href="16507282.html">下一页</a></dd><dd id="tipsfoot"></dd>
   def _get_next(self):
     return self._soup.find('dd',id="footlink").find_all('a')[2].get('href')

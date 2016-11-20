@@ -2,7 +2,7 @@
 import os,sys
 import chardet
 def scan(dir):
-  order = 700001
+  order = 300001
   unorders = []
   has = 0
   miss = 0
