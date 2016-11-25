@@ -47,7 +47,7 @@ if __name__ == "__main__":
   reload(sys)
   sys.setdefaultencoding('utf-8')
   ###########
-  root_url = "http://www.biqugex.com/book_4440/"
+  root_url = "http://www.37zw.com/1/1539/"
   #m_url = "http://m.quledu.com/"
   man = Sp_urlManager.urlsManager(root_url)
   #############

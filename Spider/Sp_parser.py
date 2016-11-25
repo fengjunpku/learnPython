@@ -12,6 +12,7 @@ class Sp_parser(object):
     #return self._soup.title.get_text()
     _title = self._soup.find('h1').get_text()
     _title = _title.replace('?','？')
+    _title = _title.replace(':','：')
     _title = _title.replace(' ','_')
     _title = _title.replace('*','0')
     _title = _title.replace('<','《')
