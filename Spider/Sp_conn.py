@@ -57,11 +57,12 @@ class Render(QWebPage):
     self.frame = self.mainFrame()  
     self.app.quit()
 #######################################################
-## Set coding
-#reload(sys)
-#sys.setdefaultencoding('utf-8')
-#url = 'http://www.23wx.com/html/21/21741/16507281.html'  
-###
-#conn = Sp_conn()
-#conn.visit(url)
-#conn.getPage()
+if __name__ == "__main__":
+  # Set coding
+  reload(sys)
+  sys.setdefaultencoding('utf-8')
+  url = 'http://www.hbooker.com/chapter/book_chapter_detail/100257072'  
+  ##
+  conn = Sp_conn()
+  conn.visit(url)
+  conn.getPage()
