@@ -28,7 +28,7 @@ class urlsManager(object):
     #pattern = re.compile(r'/wcxs-\d+-\d+')
     #soup = soup.find_all('div',{'class','box'})[1]
     count = 300001
-    for entry in soup.find('div',id='main').find_all('a'):
+    for entry in soup.find('div',id='list').find_all('a'):
       url = entry.get('href')
       title = entry.get_text()
       title = title.replace('?','？')
