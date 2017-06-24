@@ -24,7 +24,7 @@ class urlsManager(object):
     if webcode == "gb2312":
       page = page#.decode("gb2312").encode("utf-8")
     soup = BeautifulSoup(page,'html.parser',from_encoding='utf-8')
-    pattern = re.compile(r'^\d+')
+    pattern = re.compile(r'^/\d+')
     #pattern = re.compile(r'/wcxs-\d+-\d+')
     #soup = soup.find_all('div',{'class','box'})[1]
     count = 300001

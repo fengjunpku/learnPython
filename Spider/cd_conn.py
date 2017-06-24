@@ -12,10 +12,16 @@ class CD_Conn(object):
             return None
         ######
         self._url=url
+        print "    "+url
         ############
         request = urllib2.Request(self._url)
         request.add_header("user-agent", "Mozilla/5.0")
-        self._response = urllib2.urlopen(request)
+        try:
+          self._response = urllib2.urlopen(request)
+        except urllib2.URLError, e:
+          print "  >>> Error: "+e.reason
+          return 502
+        #self._response = urllib2.urlopen(request)
         return self._response.getcode()
     
     def getpage(self):       
